@@ -2,10 +2,8 @@
   box-sizing: border-box;
 }
 
-html {
-  background: #b8b4ae;
-  min-height: 100%;
-  padding: 2rem 1rem;
+html, body {
+  background: #fefcf7;
 }
 
 body {
@@ -13,26 +11,14 @@ body {
   font-size: 1.0625rem;
   line-height: 1.75;
   color: #1a1a1a;
-  background: #fefcf7;
   max-width: 780px;
   margin: 0 auto;
-  padding: 4rem 5rem 6rem;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.1);
-  min-height: calc(100vh - 4rem);
+  padding: 3rem 4rem 6rem;
 }
 
 @media (max-width: 680px) {
-  html {
-    background: #fefcf7;
-    padding: 0;
-  }
   body {
-    margin: 0;
     padding: 2rem 1.5rem 4rem;
-    box-shadow: none;
-    min-height: 100vh;
   }
 }
 
