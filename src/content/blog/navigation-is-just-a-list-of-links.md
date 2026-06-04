@@ -1,0 +1,38 @@
+---
+title: Navigation is not a design problem, it's a list of links
+date: 2026-06-01
+description: You do not need a hamburger menu. You have five pages.
+---
+
+Somewhere along the way, "nav" became a design challenge instead of a list of places you can go.
+
+Look at almost any modern website. The navigation is a component. It has state — open, closed, animating. It has a hamburger icon that requires a click to reveal the actual navigation. It runs JavaScript. On mobile it slides in from the left. It has an aria-label, a focus trap, an animation duration exported as a CSS custom property.
+
+For five links.
+
+You have five pages. The navigation has five links. This is not a problem that requires a solution. It requires a `<nav>` with five `<a>` tags.
+
+---
+
+Here's what navigation actually needs to do:
+
+1. Show the user where they can go.
+2. Let them click to get there.
+
+That's the complete list. There is no step three.
+
+A flex container that wraps on mobile. No JavaScript. No state. No component. The browser has been doing this since 1993 and it's very good at it.
+
+---
+
+The hamburger menu was invented because phone screens used to be 320px wide. Phone screens are now often 400px wide or more. A short nav fits on one line. The hamburger icon, its click handler, its open/close animation, its keyboard trap for accessibility — all of that complexity exists to solve a problem that no longer exists on most devices.
+
+And on the devices where it does still matter? The browser's overflow behavior handles it. `flex-wrap: wrap` and a bit of padding is a responsive navigation.
+
+---
+
+I've been building this argument with the navigation on this very site. Look at it. It's a site name and five links in a monospace font. You can see all of them at once. You know where you are. You know where you can go.
+
+The whole nav block is ten lines of HTML. The "component" is a for-loop over an array of five objects.
+
+You don't need a design system for this. You need a list.
