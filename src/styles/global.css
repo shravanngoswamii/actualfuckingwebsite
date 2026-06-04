@@ -2,15 +2,34 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #e8e4de;
+  min-height: 100%;
+}
+
 body {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.125rem;
   line-height: 1.7;
   color: #111;
   background: #fff;
-  max-width: 65ch;
-  margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  max-width: 760px;
+  margin: 2rem auto;
+  padding: 3rem 4rem 5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 4rem);
+}
+
+@media (max-width: 640px) {
+  html {
+    background: #fff;
+  }
+  body {
+    margin: 0;
+    padding: 1.5rem 1.25rem 3rem;
+    box-shadow: none;
+    min-height: 100vh;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,7 +60,7 @@ nav {
   flex-wrap: wrap;
   gap: 0.25rem 1.5rem;
   margin-bottom: 3rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-family: monospace;
 }
 
@@ -63,7 +82,7 @@ li {
 
 blockquote {
   border-left: 2px solid #111;
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 1.5rem 0;
   padding-left: 1rem;
   font-style: italic;
 }
@@ -86,7 +105,7 @@ pre code {
 
 hr {
   border: none;
-  border-top: 1px solid #111;
+  border-top: 1px solid #ccc;
   margin: 2.5rem 0;
 }
 
@@ -108,7 +127,8 @@ th {
 footer {
   margin-top: 4rem;
   padding-top: 1rem;
-  border-top: 1px solid #111;
+  border-top: 1px solid #ccc;
   font-size: 0.85rem;
   font-family: monospace;
+  color: #555;
 }
