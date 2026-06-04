@@ -1,17 +1,61 @@
 ---
-
+import Base from "../layouts/Base.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="actualfuckingwebsite.com">
+  <h1>An actual fucking website.</h1>
+
+  <p>
+    You've seen the first one. Raw HTML. No CSS. Just text on a white void. Someone
+    very angry on the internet said that was enough, and honestly? Fair point. Text
+    is the whole point. The medium is the message, etc.
+  </p>
+
+  <p>
+    Then someone else came along with seven lines of CSS — a max-width, a font-size,
+    some line-height — and said <em>"look how much better it reads now."</em> Also a
+    great point. Readability matters. Give words room to breathe.
+  </p>
+
+  <p>But here's what both of those websites got wrong.</p>
+
+  <p><strong>They had one page.</strong></p>
+
+  <p>
+    One page is not a website. One page is a sticky note. It's a pamphlet you hand
+    someone at the airport and then sprint away. It says one thing and it's done
+    with you forever.
+  </p>
+
+  <p>
+    A website has <em>pages</em>. It has an about page so people know you're a human
+    and not an AI. It has a blog so your thoughts exist somewhere other than a
+    thread on a platform that will be bankrupt, irrelevant, or acquired by a
+    bored billionaire by Thursday. It has a <code>/now</code> page because Derek
+    Sivers was right. It has a contact page with your email address, because
+    how the hell else is anyone supposed to reach you — a contact form that
+    sends data to three different analytics companies?
+  </p>
+
+  <p>You can have all of that. With a nav that is just a list of links. With a layout that is just centering. With CSS you could read in under a minute.</p>
+
+  <p>This is that website.</p>
+
+  <hr />
+
+  <p>
+    Look at that nav up there. Five links. Each one goes to a page. That's it.
+    That's the whole architecture. No framework, no hydration boundary, no
+    lighthouse score celebration tweet. Just pages.
+  </p>
+
+  <p>
+    This entire site is under 15KB uncompressed. Your cookie consent banner is
+    larger than this website.
+  </p>
+
+  <p>
+    Go read the <a href="/about">about page</a>. Then come back and tell me we
+    need a 200KB JavaScript bundle to display biographical text.
+  </p>
+</Base>
