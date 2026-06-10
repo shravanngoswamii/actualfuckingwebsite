@@ -5,8 +5,7 @@ import satori from 'satori';
 const SITE = 'actualfuckingwebsite.com';
 const BG = '#fefcf7';
 const INK = '#1a1a1a';
-const MUTED = '#888';
-const RULE = '#c8c4bc';
+const MUTED = '#999';
 
 async function loadGoogleFont(family: string, weight: string, text: string) {
   const api = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}&text=${encodeURIComponent(text)}`;
@@ -34,7 +33,7 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
     loadGoogleFont('Inconsolata', '400', chars),
   ]);
 
-  const titleSize = title.length > 55 ? 56 : title.length > 35 ? 68 : 80;
+  const titleSize = title.length > 55 ? 54 : title.length > 35 ? 66 : 78;
 
   const markup = html`
     <div
@@ -43,8 +42,9 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
         width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: column;
-        padding: 60px 72px;
+        align-items: center;
+        justify-content: center;
+        padding: 80px;
         font-family: 'Lora';
       "
     >
@@ -52,63 +52,48 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
         style="
           display: flex;
           flex-direction: column;
-          flex: 1;
-          border-left: 3px solid ${INK};
-          padding-left: 36px;
-          justify-content: space-between;
+          align-items: center;
+          gap: 32px;
+          width: 100%;
+          text-align: center;
         "
       >
+        <div style="width: 48px; height: 2px; background: ${INK}; display: flex;"></div>
+
+        <div
+          style="
+            font-size: ${titleSize}px;
+            font-weight: 700;
+            color: ${INK};
+            line-height: 1.2;
+            display: flex;
+            max-height: 320px;
+            overflow: hidden;
+            text-align: center;
+            justify-content: center;
+          "
+        >
+          ${title}
+        </div>
+
+        ${
+          subtitle
+            ? `<div style="font-family: 'Inconsolata'; font-size: 22px; color: ${MUTED}; display: flex;">${subtitle}</div>`
+            : ''
+        }
+
+        <div style="width: 48px; height: 2px; background: ${INK}; display: flex;"></div>
+
         <div
           style="
             font-family: 'Inconsolata';
-            font-size: 20px;
+            font-size: 18px;
             color: ${MUTED};
             letter-spacing: 0.05em;
             display: flex;
           "
         >
           ${SITE}
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <div
-            style="
-              font-size: ${titleSize}px;
-              font-weight: 700;
-              color: ${INK};
-              line-height: 1.15;
-              display: flex;
-              max-height: 290px;
-              overflow: hidden;
-            "
-          >
-            ${title}
-          </div>
-          ${
-            subtitle
-              ? `<div style="font-family: 'Inconsolata'; font-size: 22px; color: ${MUTED}; display: flex;">${subtitle}</div>`
-              : ''
-          }
-        </div>
-
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 12px;
-          "
-        >
-          <div style="width: 32px; height: 1px; background: ${RULE}; display: flex;"></div>
-          <div
-            style="
-              font-family: 'Inconsolata';
-              font-size: 18px;
-              color: ${RULE};
-              display: flex;
-            "
-          >
-            an actual fucking website
-          </div>
         </div>
       </div>
     </div>
