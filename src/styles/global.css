@@ -101,6 +101,40 @@ pre code {
   padding: 0;
 }
 
+.code-frame {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.code-frame pre {
+  margin: 0;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.15em 0.55em;
+  background: #fefcf7;
+  border: 1px solid #bbb;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #888;
+  cursor: pointer;
+  line-height: 1.6;
+  user-select: none;
+}
+
+.copy-btn:hover {
+  color: #1a1a1a;
+  border-color: #888;
+}
+
+.copy-btn[data-copied] {
+  color: #444;
+  border-color: #999;
+}
+
 hr {
   border: none;
   border-top: 1px solid #ccc;
