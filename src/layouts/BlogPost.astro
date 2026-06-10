@@ -1,21 +1,31 @@
 ---
 import Base from "./Base.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
   post: CollectionEntry<"blog">;
+  headings: { depth: number; slug: string; text: string }[];
 }
 
-const { post } = Astro.props;
-const { title, date, description } = post.data;
+const { post, headings = [] } = Astro.props;
+const { title, date, description, tags } = post.data;
 ---
 
 <Base title={title} description={description}>
-  <article>
+  <article style="position: relative;">
     <h1>{title}</h1>
-    <p style="font-family: monospace; font-size: 0.85rem; margin-top: 0;">
-      {date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+    <p class="post-meta">
+      <time datetime={date.toISOString()}>
+        {date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+      </time>
+      {tags && tags.length > 0 && (
+        <span class="post-tags">
+          {tags.map((tag) => <span class="tag">{tag}</span>)}
+        </span>
+      )}
     </p>
+    <TableOfContents headings={headings} />
     <hr />
     <slot />
   </article>
