@@ -1,0 +1,40 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth > 1 && h.depth < 4);
+---
+
+{
+  toc.length > 0 && (
+    <>
+      {/* Inline collapsible — shown on mobile / narrow screens */}
+      <details class="toc-inline">
+        <summary>Contents</summary>
+        <ol>
+          {toc.map((h) => (
+            <li class={h.depth === 3 ? 'toc-sub' : undefined}>
+              <a href={`#${h.slug}`}>{h.text}</a>
+            </li>
+          ))}
+        </ol>
+      </details>
+
+      {/* Sticky sidebar — shown on wide desktop screens */}
+      <nav class="toc-sidebar" aria-label="Table of contents">
+        <div class="toc-sidebar-inner">
+          <p class="toc-sidebar-title">Contents</p>
+          <ol>
+            {toc.map((h) => (
+              <li class={h.depth === 3 ? 'toc-sub' : undefined}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </nav>
+    </>
+  )
+}
