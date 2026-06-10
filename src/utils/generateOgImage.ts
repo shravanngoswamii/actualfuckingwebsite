@@ -5,7 +5,8 @@ import satori from 'satori';
 const SITE = 'actualfuckingwebsite.com';
 const BG = '#fefcf7';
 const INK = '#1a1a1a';
-const MUTED = '#999';
+const MUTED = '#888';
+const RULE = '#c8c4bc';
 
 async function loadGoogleFont(family: string, weight: string, text: string) {
   const api = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}&text=${encodeURIComponent(text)}`;
@@ -33,7 +34,7 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
     loadGoogleFont('Inconsolata', '400', chars),
   ]);
 
-  const titleSize = title.length > 55 ? 54 : title.length > 35 ? 66 : 78;
+  const titleSize = title.length > 55 ? 56 : title.length > 35 ? 68 : 80;
 
   const markup = html`
     <div
@@ -53,12 +54,31 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 32px;
-          width: 100%;
           text-align: center;
+          gap: 28px;
+          max-width: 900px;
         "
       >
-        <div style="width: 48px; height: 2px; background: ${INK}; display: flex;"></div>
+        <div
+          style="
+            font-family: 'Inconsolata';
+            font-size: 18px;
+            color: ${MUTED};
+            letter-spacing: 0.08em;
+            display: flex;
+          "
+        >
+          ${SITE}
+        </div>
+
+        <div
+          style="
+            width: 40px;
+            height: 1px;
+            background: ${RULE};
+            display: flex;
+          "
+        ></div>
 
         <div
           style="
@@ -67,10 +87,7 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
             color: ${INK};
             line-height: 1.2;
             display: flex;
-            max-height: 320px;
-            overflow: hidden;
             text-align: center;
-            justify-content: center;
           "
         >
           ${title}
@@ -78,23 +95,9 @@ export async function generateOgImage(title: string, subtitle?: string): Promise
 
         ${
           subtitle
-            ? `<div style="font-family: 'Inconsolata'; font-size: 22px; color: ${MUTED}; display: flex;">${subtitle}</div>`
+            ? `<div style="font-family: 'Inconsolata'; font-size: 20px; color: ${MUTED}; display: flex; text-align: center;">${subtitle}</div>`
             : ''
         }
-
-        <div style="width: 48px; height: 2px; background: ${INK}; display: flex;"></div>
-
-        <div
-          style="
-            font-family: 'Inconsolata';
-            font-size: 18px;
-            color: ${MUTED};
-            letter-spacing: 0.05em;
-            display: flex;
-          "
-        >
-          ${SITE}
-        </div>
       </div>
     </div>
   `;
