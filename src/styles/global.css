@@ -370,7 +370,7 @@ dialog#search-modal {
   overflow: hidden;
 }
 
-dialog[open]#search-modal {
+dialog#search-modal[open] {
   display: flex;
   flex-direction: column;
 }
