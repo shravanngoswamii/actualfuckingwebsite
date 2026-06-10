@@ -83,10 +83,13 @@ blockquote {
 code {
   font-family: monospace;
   font-size: 0.875em;
+  background: #f0ede8;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
 }
 
 pre {
-  background: #f0ede8;
+  background: #f0ede8 !important;
   padding: 1rem 1.25rem;
   overflow-x: auto;
   border-left: 2px solid #bbb;
@@ -94,6 +97,8 @@ pre {
 
 pre code {
   font-size: 0.875rem;
+  background: none;
+  padding: 0;
 }
 
 hr {
@@ -125,3 +130,301 @@ footer {
   font-family: monospace;
   color: #666;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Blog post meta ──────────────────────────────────────────── */
+
+.post-meta {
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin-top: 0;
+  color: #555;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-family: monospace;
+  font-size: 0.75rem;
+  border: 1px solid #bbb;
+  padding: 0.1em 0.5em;
+  color: #666;
+}
+
+/* ── Table of contents (inline, mobile / no sidebar) ────────── */
+
+.toc-inline {
+  border: 1px solid #d4d0c8;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  background: #faf8f3;
+}
+
+.toc-inline summary {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  color: #666;
+}
+
+.toc-inline summary:hover {
+  color: #1a1a1a;
+}
+
+.toc-inline ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc-inline li {
+  margin: 0.2rem 0;
+  font-family: Georgia, serif;
+}
+
+.toc-inline li.toc-sub {
+  padding-left: 1rem;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.toc-inline a {
+  text-decoration: none;
+}
+
+.toc-inline a:hover {
+  text-decoration: underline;
+}
+
+/* ── Table of contents (sidebar, desktop) ───────────────────── */
+
+.toc-sidebar {
+  display: none;
+}
+
+@media (min-width: 1140px) {
+  .toc-inline {
+    display: none;
+  }
+
+  .toc-sidebar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: calc(100% + 2.5rem);
+    width: 210px;
+  }
+
+  .toc-sidebar-inner {
+    position: sticky;
+    top: 2.5rem;
+    border-left: 1px solid #d4d0c8;
+    padding-left: 1rem;
+  }
+
+  .toc-sidebar-title {
+    font-family: monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin: 0 0 0.5rem;
+  }
+
+  .toc-sidebar ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .toc-sidebar li {
+    margin: 0.2rem 0;
+  }
+
+  .toc-sidebar li.toc-sub {
+    padding-left: 0.75rem;
+    font-size: 0.875em;
+  }
+
+  .toc-sidebar a {
+    font-size: 0.85rem;
+    font-family: Georgia, serif;
+    color: #666;
+    text-decoration: none;
+    line-height: 1.4;
+    display: block;
+  }
+
+  .toc-sidebar a:hover {
+    color: #1a1a1a;
+  }
+}
+
+/* ── Callouts (unified: both MDX component and rehype-callouts) ─ */
+
+.callout {
+  border: 1px solid #d4d0c8;
+  border-left: 3px solid #999;
+  padding: 0.875rem 1.125rem;
+  margin: 1.75rem 0;
+  background: #faf8f3;
+}
+
+/* Label row — MDX Callout.astro */
+.callout-label {
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  color: #555;
+}
+
+/* Label row — rehype-callouts */
+.callout-title {
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.callout-title-icon {
+  display: none;
+}
+
+.callout-body > :first-child,
+.callout-content > :first-child { margin-top: 0; }
+
+.callout-body > :last-child,
+.callout-content > :last-child { margin-bottom: 0; }
+
+/* Type variants — MDX component uses class, rehype uses data-callout */
+.callout-note,
+[data-callout="note"]    { border-left-color: #888; }
+
+.callout-tip,
+[data-callout="tip"]     { border-left-color: #555; background: #f7f5ef; }
+
+.callout-warning,
+[data-callout="warning"] { border-left-color: #444; border-left-width: 4px; }
+
+.callout-danger,
+[data-callout="caution"] { border-left-color: #1a1a1a; border-left-width: 4px; }
+
+.callout-important,
+[data-callout="important"] { border-left-color: #333; border-left-width: 4px; background: #f7f5ef; }
+
+/* ── Search modal ────────────────────────────────────────────── */
+
+#search-trigger {
+  background: none;
+  border: none;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+#search-trigger:hover {
+  text-decoration: underline;
+}
+
+#search-trigger::after {
+  content: " [/]";
+  color: #999;
+  font-size: 0.75rem;
+}
+
+dialog#search-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  top: 12vh;
+  width: min(640px, 92vw);
+  max-height: 70vh;
+  border: 1px solid #bbb;
+  padding: 0;
+  background: #fefcf7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+dialog#search-modal::backdrop {
+  background: rgba(20, 18, 14, 0.4);
+}
+
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #d4d0c8;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  color: #666;
+  flex-shrink: 0;
+}
+
+#search-close {
+  background: none;
+  border: 1px solid #ccc;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #888;
+  cursor: pointer;
+  padding: 0.1em 0.5em;
+  line-height: 1.4;
+}
+
+#search-close:hover {
+  color: #1a1a1a;
+  border-color: #888;
+}
+
+.search-dev-msg {
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+#pagefind-search {
+  padding: 0.75rem 1rem;
+  overflow-y: auto;
+  --pagefind-ui-scale: 0.9;
+  --pagefind-ui-primary: #1a1a1a;
+  --pagefind-ui-text: #1a1a1a;
+  --pagefind-ui-background: #fefcf7;
+  --pagefind-ui-border: #ccc;
+  --pagefind-ui-tag: #f0ede8;
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: 0;
+  --pagefind-ui-font: Georgia, "Times New Roman", serif;
+}
+
+
