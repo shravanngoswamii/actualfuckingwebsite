@@ -1,0 +1,85 @@
+---
+title: You don't need a build system to have nice code blocks
+date: 2026-06-11
+description: Syntax highlighting, callouts, and typeset code. All static. All free.
+tags: [meta, code, demo]
+---
+
+import Callout from '../../components/Callout.astro';
+
+This post exists to demonstrate that you can have genuinely nice blog features — syntax highlighting, callouts, a table of contents — without shipping a megabyte of JavaScript. This is a live demo inside the demo.
+
+## Code highlighting
+
+Here's some code. It's highlighted at build time by Shiki. Zero client-side JavaScript. The colors are baked into the HTML.
+
+```typescript
+function formatDate(date: Date): string {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+```
+
+```css
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 4rem;
+}
+```
+
+```bash
+npm run build
+# Builds the site, generates OG images, indexes with pagefind
+# The whole thing. Under six seconds.
+```
+
+## Callouts
+
+These are Astro components imported into MDX. No runtime dependency. The HTML is in the output.
+
+<Callout type="note">
+  This is a note. Use it for supplementary context that doesn't belong in the main flow. The border weight tells you it's informational.
+</Callout>
+
+<Callout type="tip" title="Pro tip">
+  The double left border on tips is a typographic signal borrowed from legal documents. Two lines means "pay attention." Old conventions earn their place.
+</Callout>
+
+<Callout type="warning">
+  A warning. Heavier border. Something requires your attention before proceeding.
+</Callout>
+
+<Callout type="danger">
+  Danger. The heaviest treatment. Top border added. Reserved for things that can actually break something.
+</Callout>
+
+## Markdown callouts
+
+For `.md` files (not MDX), you can use the GitHub-style callout syntax and the rehype plugin handles the transformation:
+
+> [!NOTE]
+> This is the GitHub-style callout syntax. Works in plain `.md` files. No MDX required.
+
+> [!WARNING]
+> This warning is written as a blockquote with a `[!WARNING]` tag. The rehype plugin converts it to a styled callout at build time.
+
+## The table of contents
+
+You see it at the top of this post. It's a `<details>` element — collapsed by default, zero JavaScript. Click to expand. Screen readers handle `<details>` natively. The browser has had this since 2014.
+
+## The search
+
+Hit "search" in the nav. It's Pagefind: a CLI that indexes your built HTML and generates a static search bundle. The search works without a server. It's a read-only index file that the client downloads on demand.
+
+The one exception to the "no JavaScript" rule on this site. The CLAUDE.md explicitly permits it. Pagefind is the right kind of JavaScript: it does work the browser cannot do with HTML alone, it's loaded lazily, and it adds nothing to pages that don't use it.
+
+## The point
+
+This entire site is a working argument. You asked for a demo, here it is. Nice blog features. No framework. No hydration. No bundle that arrives before the content.
+
+Just pages.
