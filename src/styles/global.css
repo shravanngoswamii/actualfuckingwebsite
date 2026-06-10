@@ -368,6 +368,9 @@ dialog#search-modal {
   padding: 0;
   background: #fefcf7;
   overflow: hidden;
+}
+
+dialog[open]#search-modal {
   display: flex;
   flex-direction: column;
 }
