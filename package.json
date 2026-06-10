@@ -8,10 +8,22 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.4.4"
+    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@pagefind/default-ui": "^1.5.2",
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^6.4.4",
+    "rehype-callouts": "^2.1.2",
+    "satori": "^0.26.0",
+    "satori-html": "^0.3.2"
+  },
+  "devDependencies": {
+    "pagefind": "^1.5.2"
   }
 }
