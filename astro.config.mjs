@@ -7,6 +7,7 @@ import rehypeCallouts from 'rehype-callouts';
 
 export default defineConfig({
   site: 'https://actualfuckingwebsite.com',
+  base: process.env.BASE_PATH || '/actualfuckingwebsite',
   integrations: [mdx(), sitemap()],
   markdown: {
     shikiConfig: {
