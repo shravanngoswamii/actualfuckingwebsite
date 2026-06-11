@@ -1,6 +1,6 @@
 # actualfuckingwebsite
 
-The third entry in the motherfuckingwebsite satirical lineage. The argument: a website needs pages.
+The third entry in the [motherfuckingwebsite](https://motherfuckingwebsite.com/) satirical lineage. The argument: a website needs pages.
 
 Built with Astro 6. Zero client-side JavaScript. Plain CSS. No frameworks.
 
